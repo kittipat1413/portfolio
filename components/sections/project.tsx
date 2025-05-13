@@ -53,7 +53,7 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Social Media Analytics Dashboard",
-    description: "Dashboard for visualizing social media engagement across Facebook, YouTube, Instagram, and Twitter using Dash & Plotly.",
+    description: "Dashboard for visualizing social media engagement across Facebook, YouTube, Instagram, and Twitter.",
     image: "plotly-dash.jpg",
     color: "from-pink-600 to-rose-500",
     textColor: "text-pink-100",

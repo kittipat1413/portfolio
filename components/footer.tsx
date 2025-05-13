@@ -42,31 +42,31 @@ export function Footer() {
         {/* Right: Social Links with brand colors */}
         <div className="flex space-x-4">
           <Link href="https://github.com/kittipat1413" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="icon" className="text-[#181717] hover:bg-muted/10">
+            <Button variant="ghost" size="icon" className="text-[#181717] dark:text-white hover:bg-muted/10">
               <span className="sr-only">GitHub</span>
               <SiGithub className="w-5 h-5" />
             </Button>
           </Link>
           <Link href="https://linkedin.com/in/kittipat-poonyakariyakorn-795389187" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="icon" className="text-[#0077B5] hover:bg-muted/10">
+            <Button variant="ghost" size="icon" className="text-[#0077B5] dark:text-white hover:bg-muted/10">
               <span className="sr-only">LinkedIn</span>
               <SiLinkedin className="w-5 h-5" />
             </Button>
           </Link>
           <Link href="mailto:k.poonyakariyakorn@gmail.com" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="icon" className="text-[#D14836] hover:bg-muted/10">
+            <Button variant="ghost" size="icon" className="text-[#D14836] dark:text-white hover:bg-muted/10">
               <span className="sr-only">Gmail</span>
               <SiGmail className="w-5 h-5" />
             </Button>
           </Link>
           <Link href="https://medium.com/@kittipat_1413" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="icon" className="text-[#000000] hover:bg-muted/10">
+            <Button variant="ghost" size="icon" className="text-[#000000] dark:text-white hover:bg-muted/10">
               <span className="sr-only">Medium</span>
               <SiMedium className="w-5 h-5" />
             </Button>
           </Link>
           <Link href="https://dev.to/kittipat1413" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="icon" className="text-[#0A0A0A] hover:bg-muted/10">
+            <Button variant="ghost" size="icon" className="text-[#0A0A0A] dark:text-white hover:bg-muted/10">
               <span className="sr-only">Dev.to</span>
               <SiDevdotto className="w-5 h-5" />
             </Button>

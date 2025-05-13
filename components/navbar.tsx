@@ -51,7 +51,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Link href="https://github.com/kittipat1413/portfolio" className="hover:opacity-80 transition-opacity">
             <FaGithub className="h-6 w-6 text-primary" />
           </Link>
 

@@ -199,52 +199,39 @@ export function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4"
             >
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <FaDownload className="mr-2 h-4 w-4" />
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" download>Download CV</a>
-              </Button>
+              {/* CV Button */}
+              <div>
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <FaDownload className="mr-2 h-4 w-4" />
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" download>Download CV</a>
+                </Button>
+              </div>
 
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-muted/10 hover:scale-110 transition-transform"
-              >
-                <a href="https://github.com/kittipat1413" target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-muted/10 hover:scale-110 transition-transform"
-              >
-                <a href="https://th.linkedin.com/in/kittipat-poonyakariyakorn-795389187" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-muted/10 hover:scale-110 transition-transform"
-              >
-                <a href="https://medium.com/@kittipat_1413" target="_blank" rel="noopener noreferrer">
-                  <FaMedium className="h-5 w-5" />
-                </a>
-              </Button>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hover:bg-muted/10 hover:scale-110 transition-transform"
-              >
-                <a href="https://dev.to/kittipat1413" target="_blank" rel="noopener noreferrer">
-                  <FaDev className="h-5 w-5" />
-                </a>
-              </Button>
+              {/* Socials */}
+              <div className="flex gap-4 sm:ml-4">
+                <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
+                  <a href="https://github.com/kittipat1413" target="_blank" rel="noopener noreferrer">
+                    <FaGithub className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
+                  <a href="https://th.linkedin.com/in/kittipat-poonyakariyakorn-795389187" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
+                  <a href="https://medium.com/@kittipat_1413" target="_blank" rel="noopener noreferrer">
+                    <FaMedium className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
+                  <a href="https://dev.to/kittipat1413" target="_blank" rel="noopener noreferrer">
+                    <FaDev className="h-5 w-5" />
+                  </a>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </motion.div>

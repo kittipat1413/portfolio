@@ -47,7 +47,7 @@ export function Navbar() {
         })
       },
       {
-        rootMargin: "0px 0px -60% 0px", // adjust when to trigger
+        rootMargin: "0px 0px -40% 0px", // adjust when to trigger
         threshold: 0.15,
       }
     )

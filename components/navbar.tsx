@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -11,7 +10,7 @@ import { useTheme } from "next-themes"
 import { FaGithub } from "react-icons/fa"
 
 const navItems = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/#home" },
   { name: "About", path: "/#about" },
   { name: "Projects", path: "/#projects" },
   { name: "Certificates", path: "/#certificates" },
@@ -22,7 +21,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const pathname = usePathname()
+  const [activeSection, setActiveSection] = useState("/#home")
+
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -34,9 +34,33 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  if (!mounted) {
-    return null
-  }
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id")
+            if (id) {
+              setActiveSection(`/#${id}`)
+            }
+          }
+        })
+      },
+      {
+        rootMargin: "0px 0px -60% 0px", // adjust when to trigger
+        threshold: 0.15,
+      }
+    )
+
+    const sections = document.querySelectorAll("section[id]")
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section))
+    }
+  }, [])
+
+  if (!mounted) return null
 
   return (
     <motion.nav
@@ -62,13 +86,13 @@ export function Navbar() {
                 href={item.path}
                 className={cn(
                   "relative text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.path
+                  activeSection === item.path
                     ? "text-primary"
                     : "text-muted-foreground"
                 )}
               >
                 {item.name}
-                {pathname === item.path && (
+                {activeSection === item.path && (
                   <motion.div
                     layoutId="navbar-indicator"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
@@ -122,7 +146,7 @@ export function Navbar() {
               href={item.path}
               className={cn(
                 "block py-2 text-sm font-medium transition-colors hover:text-primary",
-                pathname === item.path
+                activeSection === item.path
                   ? "text-primary"
                   : "text-muted-foreground"
               )}

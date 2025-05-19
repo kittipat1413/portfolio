@@ -9,6 +9,7 @@ import Link from "next/link"
 export function HeroSection() {
   return (
     <motion.section
+      id="home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

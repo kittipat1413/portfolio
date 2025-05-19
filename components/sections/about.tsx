@@ -45,7 +45,6 @@ const floatingAnimation = {
 }
 
 export function AboutSection() {
-  const [activeSkill, setActiveSkill] = useState<string | null>(null)
   const [showBio, setShowBio] = useState(false)
 
   return (

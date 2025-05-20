@@ -9,7 +9,7 @@ import Image from "next/image"
 const skillGroups = [
   {
     title: "Languages",
-    skills: ["Golang", "Python", "TypeScript", "JavaScript"],
+    skills: ["Golang", "Python", "TypeScript", "JavaScript", "C++", "C"],
   },
   {
     title: "Databases",
@@ -17,7 +17,7 @@ const skillGroups = [
   },
   {
     title: "DevOps & Tools",
-    skills: ["Docker", "Kubernetes", "ArgoCD", "Rancher", "GitHub Actions", "GitLab CI"],
+    skills: ["Terraform", "Ansible", "Docker", "Kubernetes", "ArgoCD", "Rancher", "GitHub Actions", "GitLab CI"],
   },
   {
     title: "Cloud Platforms",

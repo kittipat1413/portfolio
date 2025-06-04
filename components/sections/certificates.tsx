@@ -16,11 +16,17 @@ const certificates = [
     link: "https://www.credly.com/badges/0586d2f1-4a84-4931-93cc-28fe7274b3ec",
   },
   {
+    title: "Associate Cloud Engineer Certification",
+    issuer: "Google",
+    date: "Jun 2025",
+    link: "https://www.credly.com/badges/ec2043e2-1b55-429d-87cd-3fb08bda34ea"
+  },
+  {
     title: "Google Cloud Cybersecurity Certificate",
-    issuer: "Google Cloud",
+    issuer: "Google",
     date: "Apr 2025",
     link: "https://www.credly.com/badges/05d15dfa-6d4f-41a7-bd63-5cc66dc09e55",
-  },
+  }
 ]
 
 export function CertificateSection() {
@@ -72,7 +78,7 @@ export function CertificateSection() {
                 {cert.title}
               </h3>
               <p className="text-sm text-muted-foreground">{cert.issuer}</p>
-              <p className="text-xs text-muted-foreground mb-4">{cert.date}</p>
+              <p className="text-xs text-muted-foreground mb-4">Issued {cert.date}</p>
               {cert.link && (
                 <a
                   href={cert.link}

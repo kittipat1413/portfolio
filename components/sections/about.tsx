@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { FaDownload, FaGithub, FaLinkedin, FaMedium, FaDev } from 'react-icons/fa'
+import { SiCredly } from "react-icons/si";
 import Image from "next/image"
 
 const skillGroups = [
@@ -218,6 +219,11 @@ export function AboutSection() {
                 <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
                   <a href="https://th.linkedin.com/in/kittipat-poonyakariyakorn-795389187" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">
+                  <a href="https://www.credly.com/users/username.60307ca9" target="_blank" rel="noopener noreferrer">
+                    <SiCredly className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" className="hover:bg-muted/10 hover:scale-110 transition-transform">

@@ -69,7 +69,7 @@ export function ExperienceSection() {
   return (
     <section
       id="experiences"
-      className="py-24 bg-gradient-to-br from-primary/10 to-secondary/10 text-foreground"
+      className="py-24 bg-primary/10 dark:bg-primary/10 text-foreground transition-colors duration-300"
     >
       <div className="container px-4 mx-auto">
         <div className="text-center mb-12">

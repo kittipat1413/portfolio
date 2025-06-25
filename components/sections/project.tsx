@@ -97,13 +97,8 @@ export function ProjectSection() {
   return (
     <section
       id="projects"
-      className="relative py-24 bg-gradient-to-br from-background to-secondary/30 transition-colors duration-300 overflow-hidden"
+      className="py-24 bg-primary/10 dark:bg-primary/10 text-foreground transition-colors duration-300"
     >
-      {/* Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 animate-gradient" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-transparent" />
-      </div>
 
       <motion.div
         initial={{ opacity: 0 }}

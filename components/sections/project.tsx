@@ -117,7 +117,7 @@ export function ProjectSection() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-5xl font-bold mb-6 text-primary"
+              className="text-3xl md:text-5xl font-bold mb-6 text-primary"
             >
               Featured Projects
             </motion.h2>
@@ -126,7 +126,7 @@ export function ProjectSection() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
               Discover projects that reflect my expertise in backend systems, developer tooling, and practical software architecture.
             </motion.p>
@@ -142,10 +142,11 @@ export function ProjectSection() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="group border border-muted rounded-xl p-6 bg-card shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/70"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+                initial={{ scale: 0.9, opacity: 0, y: 50 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, type: "spring" }}
+                whileHover={{ scale: 1.03 }}
+                className="rounded-lg border border-border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-primary/70"
               >
                 <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}

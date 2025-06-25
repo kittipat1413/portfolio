@@ -53,7 +53,7 @@ export function CertificateSection() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8"
+            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
             A selection of certifications I've earned in cloud, DevOps, and security domains.
           </motion.p>
@@ -70,9 +70,9 @@ export function CertificateSection() {
               key={cert.title}
               initial={{ scale: 0.9, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.4, type: "spring" }}
+              transition={{ duration: 0.4, type: "spring" }}
               whileHover={{ scale: 1.03 }}
-              className="rounded-lg border border-muted bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="rounded-lg border border-border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-primary/70"
             >
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 {cert.title}

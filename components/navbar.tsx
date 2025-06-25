@@ -15,6 +15,7 @@ const navItems = [
   { name: "Projects", path: "/#projects" },
   { name: "Certificates", path: "/#certificates" },
   { name: "Experience", path: "/#experiences" },
+  { name: "Blog", path: "/#blog" },
 ]
 
 export function Navbar() {

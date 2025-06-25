@@ -32,8 +32,9 @@ const certificates = [
 export function CertificateSection() {
   return (
     <section
-  id="certificates"
-  className="py-24 bg-gradient-to-br from-background to-secondary overflow-hidden">
+      id="certificates"
+      className="py-24 bg-gradient-to-br from-background to-secondary overflow-hidden"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

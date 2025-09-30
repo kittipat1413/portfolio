@@ -30,7 +30,7 @@ const projects: Project[] = [
     id: 1,
     title: "go-common",
     description: "A common backend framework to standardize and accelerate backend service development.",
-    image: "/golang-logo.jpg",
+    image: "/project/golang-logo.jpg",
     color: "from-indigo-600 to-purple-600",
     textColor: "text-indigo-100",
     details: "This repository provides a collection of tools, patterns, and libraries used to build backend API services consistently. It includes features like logging, error handling, tracing, middleware, structured validation, and more. Designed to work well with Go-based clean architecture.",
@@ -42,7 +42,7 @@ const projects: Project[] = [
     id: 2,
     title: "Ticket Reservation System",
     description: "A clean architecture-based concert ticket booking system with seat selection and payments.",
-    image: "/tickets-reservation.png",
+    image: "/project/tickets-reservation.png",
     color: "from-blue-600 to-sky-500",
     textColor: "text-blue-100",
     details: "This is a simple yet powerful demo of a real-world Go backend using go-common. It features domain-driven design, layered architecture, Redis-based seat locking, and transactional booking flows. Built to demonstrate reusable backend patterns.",
@@ -54,7 +54,7 @@ const projects: Project[] = [
     id: 3,
     title: "Social Media Analytics Dashboard",
     description: "Dashboard for visualizing social media engagement across Facebook, YouTube, Instagram, and Twitter.",
-    image: "plotly-dash.jpg",
+    image: "/project/plotly-dash.jpg",
     color: "from-pink-600 to-rose-500",
     textColor: "text-pink-100",
     details:
@@ -67,7 +67,7 @@ const projects: Project[] = [
     id: 4,
     title: "ESP8266 Modbus RTU Library",
     description: "C++ library for ESP8266 microcontroller to communicate over Modbus RTU via serial.",
-    image: "modbus.jpg",
+    image: "/project/modbus.jpg",
     color: "from-amber-600 to-yellow-500",
     textColor: "text-yellow-100",
     details:
@@ -80,7 +80,7 @@ const projects: Project[] = [
     id: 5,
     title: "Omron D6T Temperature Sensor Library",
     description: "C library to interface with Omron D6T thermal sensor via I2C, developed during the COVID-19 pandemic.",
-    image: "omronD6T.jpg",
+    image: "/project/omronD6T.jpg",
     color: "from-gray-700 to-gray-500",
     textColor: "text-gray-100",
     details:
@@ -110,7 +110,8 @@ export function ProjectSection() {
           <div className="text-center mb-12">
             <motion.h2
               initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               className="text-3xl md:text-5xl font-bold mb-6 text-primary"
             >
@@ -118,9 +119,10 @@ export function ProjectSection() {
             </motion.h2>
 
             <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
               Discover projects that reflect my expertise in backend systems, developer tooling, and practical software architecture.
@@ -128,18 +130,14 @@ export function ProjectSection() {
           </div>
 
           {/* Project Cards */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ scale: 0.9, opacity: 0, y: 50 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, type: "spring" }}
+                whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
                 whileHover={{ scale: 1.03 }}
                 className="rounded-lg border border-border bg-card p-6 shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-primary/70"
               >
@@ -200,7 +198,7 @@ export function ProjectSection() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 

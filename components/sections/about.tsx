@@ -4,8 +4,15 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { FaDownload, FaGithub, FaLinkedin, FaMedium, FaDev } from 'react-icons/fa'
-import { SiCredly } from "react-icons/si";
+import {
+  SiCredly,
+  SiGo, SiPython, SiTypescript, SiJavascript,
+  SiPostgresql, SiMysql, SiMongodb,
+  SiDocker, SiKubernetes, SiTerraform,
+  SiAmazonwebservices, SiGooglecloud
+} from "react-icons/si";
 import Image from "next/image"
+import LogoLoop from "@/components/ui/logo-loop"
 
 const skillGroups = [
   {
@@ -26,11 +33,19 @@ const skillGroups = [
   },
 ]
 
-const interests = [
-  { icon: "🧠", label: "System Design" },
-  { icon: "📘", label: "Writing Technical Blogs" },
-  { icon: "🎮", label: "Gaming" },
-  { icon: "🌍", label: "Traveling" },
+const techLogos = [
+  { node: <SiGo className="text-blue-600" />, title: "Golang", href: "https://go.dev" },
+  { node: <SiPython className="text-blue-500" />, title: "Python", href: "https://python.org" },
+  { node: <SiTypescript className="text-blue-700" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiJavascript className="text-yellow-500" />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  { node: <SiPostgresql className="text-blue-600" />, title: "PostgreSQL", href: "https://www.postgresql.org" },
+  { node: <SiMysql className="text-orange-500" />, title: "MySQL", href: "https://www.mysql.com" },
+  { node: <SiMongodb className="text-green-500" />, title: "MongoDB", href: "https://www.mongodb.com" },
+  { node: <SiDocker className="text-blue-500" />, title: "Docker", href: "https://www.docker.com" },
+  { node: <SiKubernetes className="text-blue-600" />, title: "Kubernetes", href: "https://kubernetes.io" },
+  { node: <SiTerraform className="text-purple-600" />, title: "Terraform", href: "https://www.terraform.io" },
+  { node: <SiGooglecloud className="text-blue-500" />, title: "Google Cloud", href: "https://cloud.google.com" },
+  { node: <SiAmazonwebservices className="text-orange-600" />, title: "AWS", href: "https://aws.amazon.com" },
 ]
 
 const floatingAnimation = {
@@ -164,35 +179,6 @@ export function AboutSection() {
               </div>
             </motion.div>
 
-            {/* Interests */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="space-y-4"
-            >
-              <h3 className="text-xl font-semibold">Interests</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {interests.map((interest, index) => (
-                  <motion.div
-                    key={interest.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.05 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="flex items-center space-x-2 p-2 bg-secondary/30 rounded-md"
-                  >
-                    <span className="text-2xl">{interest.icon}</span>
-                    <span className="text-sm text-secondary-foreground">
-                      {interest.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
             {/* Actions */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -239,6 +225,28 @@ export function AboutSection() {
               </div>
             </motion.div>
           </div>
+        </motion.div>
+
+        {/* Technology Stack Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16"
+        >
+          <LogoLoop
+            logos={techLogos}
+            speed={50}
+            direction="left"
+            logoHeight={32}
+            gap={48}
+            pauseOnHover={true}
+            fadeOut={true}
+            scaleOnHover={true}
+            ariaLabel="Technology stack"
+            className="py-4"
+          />
         </motion.div>
       </div>
     </section>

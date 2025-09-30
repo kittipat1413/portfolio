@@ -80,7 +80,8 @@ export function BlogSection() {
   const ArticleCard = ({ article, index }: { article: BlogArticle; index: number }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ delay: 0.1 * index, duration: 0.5 }}
       className="group"
     >
@@ -97,10 +98,9 @@ export function BlogSection() {
               </CardDescription>
             </div>
             <Badge
-              className={`text-white ${
-                article.source === "medium"
-                  ? "bg-green-600 hover:bg-green-700"
-                  : "bg-blue-600 hover:bg-blue-700"
+              className={`text-white ${article.source === "medium"
+                ? "bg-green-600 hover:bg-green-700"
+                : "bg-blue-600 hover:bg-blue-700"
                 }`}
             >
               {article.source === "medium" ? "Medium" : "DEV.to"}
@@ -188,16 +188,18 @@ export function BlogSection() {
         <div className="text-center mb-12">
           <motion.h2
             initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-6 text-primary"
           >
             Latest Blog Posts
           </motion.h2>
           <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
             I write about software development, cloud technologies, and my journey as a developer.
@@ -210,43 +212,51 @@ export function BlogSection() {
         ) : error ? (
           <ErrorState />
         ) : (
-          <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-12">
-              <TabsTrigger value="all">All Posts</TabsTrigger>
-              <TabsTrigger value="medium">Medium</TabsTrigger>
-              <TabsTrigger value="devto">DEV.to</TabsTrigger>
-            </TabsList>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Tabs defaultValue="all" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-12">
+                <TabsTrigger value="all">All Posts</TabsTrigger>
+                <TabsTrigger value="medium">Medium</TabsTrigger>
+                <TabsTrigger value="devto">DEV.to</TabsTrigger>
+              </TabsList>
 
-            <TabsContent value="all">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {[...mediumArticles.slice(0, 3), ...devToArticles.slice(0, 3)].map((article, i) => (
-                  <ArticleCard key={`${article.source}-${i}`} article={article} index={i} />
-                ))}
-              </div>
-            </TabsContent>
+              <TabsContent value="all">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {[...mediumArticles.slice(0, 3), ...devToArticles.slice(0, 3)].map((article, i) => (
+                    <ArticleCard key={`${article.source}-${i}`} article={article} index={i} />
+                  ))}
+                </div>
+              </TabsContent>
 
-            <TabsContent value="medium">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {mediumArticles.slice(0, 6).map((article, i) => (
-                  <ArticleCard key={`medium-${i}`} article={article} index={i} />
-                ))}
-              </div>
-            </TabsContent>
+              <TabsContent value="medium">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {mediumArticles.slice(0, 6).map((article, i) => (
+                    <ArticleCard key={`medium-${i}`} article={article} index={i} />
+                  ))}
+                </div>
+              </TabsContent>
 
-            <TabsContent value="devto">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {devToArticles.slice(0, 6).map((article, i) => (
-                  <ArticleCard key={`devto-${i}`} article={article} index={i} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+              <TabsContent value="devto">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {devToArticles.slice(0, 6).map((article, i) => (
+                    <ArticleCard key={`devto-${i}`} article={article} index={i} />
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
+          </motion.div>
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          initial={{ scale: 0.5, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="text-center mt-12"
         >
           <div className="flex flex-wrap justify-center gap-4">

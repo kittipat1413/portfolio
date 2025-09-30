@@ -75,16 +75,18 @@ export function ExperienceSection() {
         <div className="text-center mb-12">
           <motion.h2
             initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="text-3xl md:text-5xl font-bold mb-6 text-primary"
           >
             Work Experience
           </motion.h2>
           <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
             A timeline of roles where I contributed to scalable systems, DevOps automation, and backend excellence.
@@ -96,8 +98,9 @@ export function ExperienceSection() {
             <motion.div
               key={index}
               initial={{ scale: 0.9, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, type: "spring" }}
+              whileInView={{ scale: 1, opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
               whileHover={{ scale: 1.03 }}
               className="border border-border rounded-xl p-6 shadow-sm bg-card hover:shadow-md transition-shadow duration-300 hover:border-primary/70"
             >

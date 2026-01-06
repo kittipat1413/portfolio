@@ -3,6 +3,8 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Award, Calendar, Building, ExternalLink } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 const certificates = [
   {
@@ -20,6 +22,13 @@ const certificates = [
     image: "/certification/github-actions.png",
   },
   {
+    title: "Google Cloud Cybersecurity Certificate",
+    issuer: "Google",
+    date: "Apr 2025",
+    link: "https://www.credly.com/badges/05d15dfa-6d4f-41a7-bd63-5cc66dc09e55",
+    image: "/certification/google-cloud-cybersecurity-certificate.png",
+  },
+  {
     title: "Associate Cloud Engineer Certification",
     issuer: "Google",
     date: "Jun 2025",
@@ -27,11 +36,11 @@ const certificates = [
     image: "/certification/google-cloud-associate-cloud-engineer.png",
   },
   {
-    title: "Google Cloud Cybersecurity Certificate",
+    title: "Professional Cloud Architect Certificate",
     issuer: "Google",
-    date: "Apr 2025",
-    link: "https://www.credly.com/badges/05d15dfa-6d4f-41a7-bd63-5cc66dc09e55",
-    image: "/certification/google-cloud-cybersecurity-certificate.png",
+    date: "Jan 2026",
+    link: "https://www.credly.com/badges/393cd9ee-e4e0-4269-a084-5440e0aa62ad",
+    image: "/certification/google-cloud-professional-cloud-architect.png",
   },
 ]
 
@@ -74,49 +83,66 @@ export function CertificateSection() {
           </motion.p>
         </div>
 
-        {/* Badge Grid */}
-        <motion.ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-          {certificates.map((cert) => (
-            <motion.li 
-              key={cert.title}
-              initial={{ scale: 0.9, opacity: 0, y: 50 }}
-              whileInView={{ scale: 1, opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-              className="text-center group"
-            >
-              {/* Clickable badge */}
-              <a
-                href={cert.link}
-                target="_blank"
-                className="inline-block relative"
-              >
-                <Image
-                  src={cert.image}
-                  alt={cert.title}
-                  width={160}
-                  height={160}
-                  className="mx-auto w-28 h-28 md:w-32 md:h-32 object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105"
-                />
-              </a>
+        {/* Badge Carousel */}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 3000,
+            }),
+          ]}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {certificates.map((cert, index) => (
+              <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/4">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="text-center group p-4"
+                >
+                  {/* Clickable badge */}
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block relative"
+                  >
+                    <Image
+                      src={cert.image}
+                      alt={cert.title}
+                      width={160}
+                      height={160}
+                      className="mx-auto w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-md transition-transform duration-200 group-hover:scale-110"
+                    />
+                  </a>
 
-              {/* Text */}
-              <h3 className="mt-3 text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                {cert.title}
-              </h3>
-              <div className="mt-1 flex flex-col items-center text-xs md:text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-1">
-                  <Building className="h-3.5 w-3.5" />
-                  {cert.issuer}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5" />
-                  {cert.date}
-                </span>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ul>
+                  {/* Text */}
+                  <h3 className="mt-4 text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    {cert.title}
+                  </h3>
+                  <div className="mt-2 flex flex-col items-center text-xs md:text-sm text-muted-foreground space-y-1">
+                    <span className="inline-flex items-center gap-1">
+                      <Building className="h-3.5 w-3.5" />
+                      {cert.issuer}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {cert.date}
+                    </span>
+                  </div>
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
 
         {/* CTA */}
         <motion.div
